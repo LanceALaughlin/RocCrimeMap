@@ -1,0 +1,186 @@
+[
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/25/2013 1:44:00",
+    "Address":"1 Block MALLING DR",
+    "Identifier":"13-337431",
+    "Description":"Location Type: Single Family Home;  Larceny Type: N/A;   Weapon Type: N/A;  ...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft",
+    "DateTime":"11/24/2013 20:16:00",
+    "Address":"1 Block E BROAD ST",
+    "Identifier":"13-337290",
+    "Description":"Location Type: Street;   Larceny Type:Theft from Motor Vehicle (not parts or...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft",
+    "DateTime":"11/24/2013 17:20:00",
+    "Address":"1400 Block HUDSON AVE",
+    "Identifier":"13-337196",
+    "Description":"Location Type: Department/DiscountStore;   Larceny Type: Shoplifting;  ...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft",
+    "DateTime":"11/24/2013 15:58:00",
+    "Address":"500 Block PORTLAND AVE",
+    "Identifier":"13-337139",
+    "Description":"Location Type: Drug Store;   LarcenyType: Shoplifting;   Weapon Type: N/A;  ...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft",
+    "DateTime":"11/24/2013 14:15:00",
+    "Address":"100 Block MT HOPE AVE",
+    "Identifier":"13-337150",
+    "Description":"Location Type: Street;   Larceny Type:All Other Larcenies, excluding Motor...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/24/2013 7:30:00",
+    "Address":"1 Block ERNST ST",
+    "Identifier":"13-336902",
+    "Description":"Location Type: Garage/Shed;   LarcenyType: N/A;   Weapon Type: N/A;   Victim...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Robbery",
+    "DateTime":"11/23/2013 21:40:00",
+    "Address":"600 Block RAMONA ST",
+    "Identifier":"13-336651",
+    "Description":"Location Type: Street;   Larceny Type:N/A;   Weapon Type: Firearm;   Victim...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/23/2013 20:00:00",
+    "Address":"1 Block WOODWARD ST",
+    "Identifier":"13-336863",
+    "Description":"Location Type: Multiple Dwelling;  Larceny Type: N/A;   Weapon Type: N/A;  ...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Assault",
+    "DateTime":"11/23/2013 19:18:00",
+    "Address":"500 Block JEFFERSON AVE",
+    "Identifier":"13-336548",
+    "Description":"Location Type: Bar;   Larceny Type: N/A;Weapon Type: Firearm;   Victim...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/23/2013 15:00:00",
+    "Address":"1 Block PROSPECT ST",
+    "Identifier":"13-337055",
+    "Description":"Location Type: Church;   Larceny Type:N/A;   Weapon Type: N/A;   Victim...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft of Vehicle",
+    "DateTime":"11/23/2013 13:00:00",
+    "Address":"800 Block JOSEPH AVE",
+    "Identifier":"13-336300",
+    "Description":"Location Type: Parking Lot;   LarcenyType: Motor Vehicle Theft;   Weapon...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft",
+    "DateTime":"11/23/2013 12:29:00",
+    "Address":"1700 Block EAST AVE",
+    "Identifier":"13-336973",
+    "Description":"Location Type: Grocery/Supermarket;  Larceny Type: All Other Larcenies,...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Robbery",
+    "DateTime":"11/23/2013 5:30:00",
+    "Address":"500 Block MONROE AVE",
+    "Identifier":"13-336102",
+    "Description":"Location Type: Street;   Larceny Type:N/A;   Weapon Type: Knife/Cutting...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft",
+    "DateTime":"11/23/2013 2:00:00",
+    "Address":"1 Block ALEXANDER ST",
+    "Identifier":"13-336170",
+    "Description":"Location Type: Street;   Larceny Type:Theft from Motor Vehicle (not parts or...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Theft",
+    "DateTime":"11/23/2013 0:14:00",
+    "Address":"1300 Block PORTLAND AV",
+    "Identifier":"IRO13055558-2",
+    "Description":"GR LAR 4-VALUE PROPERTY GREATER THAN$1000",
+    "Agency":"Irondequoit Town Police Department"
+  },
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/23/2013 0:14:00",
+    "Address":"1300 Block PORTLAND AV",
+    "Identifier":"IRO13055558-1",
+    "Description":"BURGLARY-3RD DEG:ILLEGAL ENTRY WITHINTENT TO COMMIT A CRIME",
+    "Agency":"Irondequoit Town Police Department"
+  },
+  {
+    "CrimeType":"Theft of Vehicle",
+    "DateTime":"11/22/2013 19:30:00",
+    "Address":"1400 Block HUDSON AVE",
+    "Identifier":"13-336225",
+    "Description":"Location Type: Parking Lot;   LarcenyType: Motor Vehicle Theft;   Weapon...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/22/2013 17:00:00",
+    "Address":"100 Block GARSON AVE",
+    "Identifier":"13-337380",
+    "Description":"Location Type: Multiple Dwelling;  Larceny Type: N/A;   Weapon Type: N/A;  ...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/22/2013 2:50:00",
+    "Address":"1000 Block N CLINTON AVE",
+    "Identifier":"13-335053",
+    "Description":"Location Type: Variety/ConvenienceStore;   Larceny Type: N/A;   Weapon...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Assault",
+    "DateTime":"11/22/2013 1:54:00",
+    "Address":"1 Block SHELTER ST",
+    "Identifier":"13-335028",
+    "Description":"Location Type: Single Family Home;  Larceny Type: N/A;   Weapon Type:...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Breaking & Entering",
+    "DateTime":"11/22/2013 1:05:00",
+    "Address":"1300 Block E RIDGE RD",
+    "Identifier":"IRO13055409-1",
+    "Description":"BURGLARY-3RD DEG:ILLEGAL ENTRY WITHINTENT TO COMMIT A CRIME",
+    "Agency":"Irondequoit Town Police Department"
+  },
+  {
+    "CrimeType":"Assault",
+    "DateTime":"11/22/2013 1:00:00",
+    "Address":"900 Block ATLANTIC AVE",
+    "Identifier":"13-335004",
+    "Description":"Location Type: Street;   Larceny Type:N/A;   Weapon Type: Other;   Victim...",
+    "Agency":"Rochester City Police Department"
+  },
+  {
+    "CrimeType":"Robbery",
+    "DateTime":"11/22/2013",
+    "Address":"400 Block GENESEE ST",
+    "Identifier":"13-334989",
+    "Description":"Location Type: Street;   Larceny Type:N/A;   Weapon Type: Firearm;   Victim...",
+    "Agency":"Rochester City Police Department"
+  }
+]
