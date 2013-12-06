@@ -31,9 +31,8 @@ function init(){
     
     //console.log(queryString);
     loadData(queryString);*/
-    loadData();
     plotNeighborhoods();
-
+    loadData();
 }
 
 
@@ -55,7 +54,6 @@ function loadData(){
 
 function handleGeoData(response){
         // for each incident, place a marker on the map
-        console.log(response);
         var n;
         var coords;
         for(n=0; n<response.length; n++)
@@ -63,16 +61,19 @@ function handleGeoData(response){
             //var myLat = parseFloat(response[n].lat);
             //var lng = parseFloat(response[n].lng);
             var identifier = response[n].Identifier;
+            console.log("before:"+identifier);
             var address = response[n].Address + "Rochester, NY";
             address = encodeURIComponent(address);
             var query = "http://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&sensor=true";
             
             $.ajax({
+            	id: identifier,
 				dataType: "json",
 				url: query,
 				success: function(success){
 					coords = getlatlong(success);
-					plotCrime(coords,identifier);
+					console.log("after:"+this.id);
+					plotCrime(coords,this.id);
 				},
 				type: "GET"
 			});
@@ -81,16 +82,18 @@ function handleGeoData(response){
 
 
 function plotCrime(coords,crimeID){
+	console.log(coords);
+	console.log(crimeID);
 	var marker = L.marker([coords[0], coords[1]]).addTo(map).on('click',function(){
-		generateCrimeData(this._myId);
+		generateCrimeData(marker.myId);
 	});
 	
-	this._myId = crimeID;
+	marker.myId = crimeID;
 }
 
 
 function generateCrimeData(crimeID){
-	console.log(crimeID);
+	console.log("incoming id:"+crimeID);
 	 var url = "crimeData2.json";
         
      $.ajax({
@@ -100,8 +103,8 @@ function generateCrimeData(crimeID){
 			var n;
 			for(n=0;n<response.length;n++){
 				var id = response[n].Identifier;
-				console.log(id);
-				if(id = crimeID){
+				//console.log(id);
+				if(id == crimeID){
 					console.log(crimeID);
 					var address = response[n].Address;
 					var agency = response[n].Agency;
