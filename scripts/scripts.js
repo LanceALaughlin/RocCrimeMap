@@ -85,18 +85,19 @@ function plotCrime(coords,crimeID){
 	console.log(coords);
 	console.log(crimeID);
 	var marker = L.marker([coords[0], coords[1]]).addTo(map).on('click',function(){
-		generateCrimeData(marker.myId);
+		generateCrimeData(marker.myId,coords);
 	});
 	
 	marker.myId = crimeID;
 }
 
 
-function generateCrimeData(crimeID){
+function generateCrimeData(crimeID,coords){
 	console.log("incoming id:"+crimeID);
 	 var url = "crimeData2.json";
         
      $.ajax({
+     	streetCoords: coords,
 		dataType: "json",
 		url: url,
 		success: function(response){
@@ -115,6 +116,7 @@ function generateCrimeData(crimeID){
 					var string = '<h1>'+address+'</h1>';
 					string += '<h2>'+agency+'</h2>';
 					string += '<p>'+description+'</p>';
+					string += '<img src="http://maps.googleapis.com/maps/api/streetview?size=400x200&location='+this.streetCoords[0]+','+this.streetCoords[1]+'&fov=90&heading=235&pitch=10&sensor=false" />';
 					
 					sidebar.setContent(string);
 					break;
@@ -147,4 +149,6 @@ function getlatlong(response){
 	
 	return coords;	
 }
+
+
     
