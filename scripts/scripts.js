@@ -116,7 +116,7 @@ function generateCrimeData(crimeID,coords){
 					var string = '<h1>'+address+'</h1>';
 					string += '<h2>'+agency+'</h2>';
 					string += '<p>'+description+'</p>';
-					string += '<img src="http://maps.googleapis.com/maps/api/streetview?size=400x200&location='+this.streetCoords[0]+','+this.streetCoords[1]+'&fov=90&heading=235&pitch=10&sensor=false" />';
+					string += '<a href="http://maps.googleapis.com/maps/api/streetview?size=800x400&location='+this.streetCoords[0]+','+this.streetCoords[1]+'&fov=90&heading=235&pitch=10&sensor=false"><img id="streetView" src="http://maps.googleapis.com/maps/api/streetview?size=400x200&location='+this.streetCoords[0]+','+this.streetCoords[1]+'&fov=90&heading=235&pitch=10&sensor=false" /></a>';
 					
 					sidebar.setContent(string);
 					break;
