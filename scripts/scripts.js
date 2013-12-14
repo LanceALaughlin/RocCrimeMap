@@ -98,14 +98,6 @@ function plotCrime(coords,crimeID){
 			allMarkers[i].setIcon(markerIcon);
 		}
 		marker.setIcon(highlightedIcon);
-		/*currentlyClicked = marker;
-
-			if(currentlyClicked. == null){
-				console.log("The currently clicked marker: " + currentlyClicked);
-			}else{
-				currentlyClicked.setIcon(markerIcon);
-				console.log("Resetting to the default icon.");
-			}*/
 	});
 	marker.myId = crimeID;
 	
@@ -153,8 +145,10 @@ function generateCrimeData(crimeID,coords){
 		},
 		type: "GET"
 		});
-	
-	sidebar.toggle();
+	var visible = sidebar.isVisible();
+	if(visible == false){
+		sidebar.toggle();
+	}
 }
 
 
