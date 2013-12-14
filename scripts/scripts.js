@@ -122,6 +122,7 @@ function generateCrimeData(crimeID,coords){
 				if(id == crimeID){
 					console.log(crimeID);
 					var address = response[n].Address;
+					address = address.replace("Block",""); 
 					var agency = response[n].Agency;
 					var type = response[n].CrimeType;
 					var time = response[n].DateTime;
