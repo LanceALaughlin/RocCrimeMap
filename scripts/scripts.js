@@ -155,7 +155,7 @@ function generateCrimeData(crimeID,coords){
 function plotNeighborhoods(){
 	var shpfile = new L.Shapefile('Neighborhoods.zip',{onEachFeature:function(feature, layer) {
     	console.log(layer);
-    	layer.options.color = "#FF1900";
+    	//layer.options.color = "#FF1900";
 	}});
          shpfile.addTo(map);
 }
