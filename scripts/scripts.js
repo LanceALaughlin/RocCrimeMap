@@ -1,5 +1,13 @@
 //var currentlyClicked = null;
 
+$( document ).ready(function() {
+	$( ".close" ).click(function() {
+		for(var i=0; i<allMarkers.length;i++){
+			allMarkers[i].setIcon(markerIcon);
+		}
+	});
+});
+
 var allMarkers = [];
 
 var map = new L.Map('map', {
