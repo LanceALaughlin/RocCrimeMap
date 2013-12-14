@@ -1,3 +1,5 @@
+var currentlyClicked;
+
 var map = new L.Map('map', {
         center: [43.1850, -77.6115],
         zoom: 12,
@@ -61,7 +63,6 @@ function handleGeoData(response){
             //var myLat = parseFloat(response[n].lat);
             //var lng = parseFloat(response[n].lng);
             var identifier = response[n].Identifier;
-            console.log("before:"+identifier);
             var address = response[n].Address + "Rochester, NY";
             address = encodeURIComponent(address);
             var query = "http://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&sensor=true";
@@ -72,7 +73,6 @@ function handleGeoData(response){
 				url: query,
 				success: function(success){
 					coords = getlatlong(success);
-					console.log("after:"+this.id);
 					plotCrime(coords,this.id);
 				},
 				type: "GET"
@@ -82,10 +82,15 @@ function handleGeoData(response){
 
 
 function plotCrime(coords,crimeID){
-	console.log(coords);
-	console.log(crimeID);
 	var marker = L.marker([coords[0], coords[1]]).addTo(map).on('click',function(){
 		generateCrimeData(marker.myId,coords);
+		marker.setIcon(highlightedIcon);
+		if(typeof(currentlyClicked) != null){
+			currentlyClicked = marker;
+			console.log(currentlyClicked);
+		}else{
+			currentlyClicked.setIcon(markerIcon);
+		}
 	});
 	
 	marker.myId = crimeID;
@@ -137,7 +142,7 @@ function generateCrimeData(crimeID,coords){
 
 function plotNeighborhoods(){
 	var shpfile = new L.Shapefile('Neighborhoods.zip',{onEachFeature:function(feature, layer) {
-    	
+    	console.log(layer);
 	}});
          shpfile.addTo(map);
 }
