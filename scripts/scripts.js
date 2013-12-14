@@ -1,4 +1,6 @@
-var currentlyClicked;
+//var currentlyClicked = null;
+
+var allMarkers = [];
 
 var map = new L.Map('map', {
         center: [43.1850, -77.6115],
@@ -84,16 +86,23 @@ function handleGeoData(response){
 function plotCrime(coords,crimeID){
 	var marker = L.marker([coords[0], coords[1]]).addTo(map).on('click',function(){
 		generateCrimeData(marker.myId,coords);
-		marker.setIcon(highlightedIcon);
-		if(typeof(currentlyClicked) != null){
-			currentlyClicked = marker;
-			console.log(currentlyClicked);
-		}else{
-			currentlyClicked.setIcon(markerIcon);
+		for(var i=0; i< allMarkers.length; i++){
+			allMarkers[i].setIcon(markerIcon);
 		}
+		marker.setIcon(highlightedIcon);
+		/*currentlyClicked = marker;
+
+			if(currentlyClicked. == null){
+				console.log("The currently clicked marker: " + currentlyClicked);
+			}else{
+				currentlyClicked.setIcon(markerIcon);
+				console.log("Resetting to the default icon.");
+			}*/
 	});
-	
 	marker.myId = crimeID;
+	
+	allMarkers.push(marker);
+	
 }
 
 

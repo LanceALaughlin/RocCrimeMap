@@ -6,7 +6,7 @@ var highlightedIcon = L.icon({
 });
 
 var markerIcon = L.icon({
-	iconUrl: 'images/markerIcon.png',
+	iconUrl: 'images/marker-icon.png',
 	iconSize: [25,40],
 	iconAnchor:[12.5,40]
 })
