@@ -23,7 +23,7 @@ L.Control.GeoSearch = L.Control.extend({
         searchLabel: 'search for address ...',
         notFoundMessage: 'Sorry, that address could not be found.',
         messageHideDelay: 3000,
-        zoomLevel: 15
+        zoomLevel: 14
     },
 
     initialize: function (options) {
@@ -177,9 +177,11 @@ L.Control.GeoSearch = L.Control.extend({
 
     _showLocation: function (location) {
         if (this.options.showMarker == true) {
-            if (typeof this._positionMarker === 'undefined')
-                this._positionMarker = L.marker([location.Y, location.X]).addTo(this._map);
-            else
+            if (typeof this._positionMarker === 'undefined'){
+                this._positionMarker = L.marker([location.Y, location.X]);
+                this._positionMarker.setIcon(posMarker);
+                this._positionMarker.addTo(this._map);
+            }else
                 this._positionMarker.setLatLng([location.Y, location.X]);
         }
 

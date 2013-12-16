@@ -10,3 +10,9 @@ var markerIcon = L.icon({
 	iconSize: [25,40],
 	iconAnchor:[12.5,40]
 })
+
+var posMarker = L.icon({
+	iconUrl: 'images/position-marker.png',
+	iconSize: [25,24],
+	iconAnchor:[12.5,12]
+})
