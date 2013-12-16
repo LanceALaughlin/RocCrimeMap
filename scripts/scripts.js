@@ -14,7 +14,7 @@ $( document ).ready(function() {
 var allMarkers = [];
 
 var map = new L.Map('map', {
-        center: [43.1850, -77.6115],
+        center: [43.1900, -77.6115],
         zoom: 12,
         layers: [
             new L.TileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
@@ -31,10 +31,11 @@ var sidebar = L.control.sidebar('sidebar', {
 
 new L.Control.GeoSearch({
     provider: new L.GeoSearch.Provider.OpenStreetMap(),
-    showMarker: false
+    showMarker: true
 }).addTo(map);
 
 map.addControl(sidebar);
+
 
 function init(){
     
@@ -162,7 +163,7 @@ function generateCrimeData(crimeID,coords){
 
 function plotNeighborhoods(){
 	var shpfile = new L.Shapefile('Neighborhoods.zip',{onEachFeature:function(feature, layer) {
-    	//var numIncidents = getNumIncidents(layer);
+    	getNumIncidents(shpfile,layer);
     	//console.log(numIncidents);
     	//console.log("here");
     	//for(var i=0; i < coords.length;
@@ -174,8 +175,11 @@ function plotNeighborhoods(){
 
 
 
-/*function getNumIncidents(layer){
+function getNumIncidents(shpfile,layer){
+	console.log(shpfile);
+	console.log(layer);
 	var count = 0;
+	/*var count = 0;
 	var results = [];
 	for(var i=0; i<allMarkers.length;i++){
 		var lat = allMarkers[i]._latlng.lat;
@@ -191,8 +195,8 @@ function plotNeighborhoods(){
 		//console.log(coords[i]);
 		//console.log("done");
 	}
-	return count;
-}*/
+	return count;*/
+}
 
 
 
