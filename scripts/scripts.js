@@ -6,6 +6,9 @@ $( document ).ready(function() {
 			allMarkers[i].setIcon(markerIcon);
 		}
 	});
+	
+	//var gju = require('geojson-utils.js');
+	
 });
 
 var allMarkers = [];
@@ -25,6 +28,11 @@ var map = new L.Map('map', {
 var sidebar = L.control.sidebar('sidebar', {
     position: 'left'
 });
+
+new L.Control.GeoSearch({
+    provider: new L.GeoSearch.Provider.OpenStreetMap(),
+    showMarker: false
+}).addTo(map);
 
 map.addControl(sidebar);
 
@@ -154,11 +162,39 @@ function generateCrimeData(crimeID,coords){
 
 function plotNeighborhoods(){
 	var shpfile = new L.Shapefile('Neighborhoods.zip',{onEachFeature:function(feature, layer) {
-    	console.log(layer);
+    	//var numIncidents = getNumIncidents(layer);
+    	//console.log(numIncidents);
+    	//console.log("here");
+    	//for(var i=0; i < coords.length;
     	//layer.options.color = "#FF1900";
-	}});
-         shpfile.addTo(map);
+	}}).addTo(map);
 }
+
+
+
+
+
+/*function getNumIncidents(layer){
+	var count = 0;
+	var results = [];
+	for(var i=0; i<allMarkers.length;i++){
+		var lat = allMarkers[i]._latlng.lat;
+		var lng = allMarkers[i]._latlng.lng;
+		results = leafletPip.pointInLayer([lng, lat], layer);
+		console.log(results);
+		//if(results.length > 0){
+		//	count++;
+	//	}
+		//var results = leafletPip.pointInLayer([-88, 38], gjLayer);
+		//console.log(allMarkers[i]._latlng.lat);
+		//console.log(allMarkers[i]._latlng.lng);
+		//console.log(coords[i]);
+		//console.log("done");
+	}
+	return count;
+}*/
+
+
 
 function getlatlong(response){
 	var coords = [];
