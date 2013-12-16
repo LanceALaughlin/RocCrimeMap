@@ -23,7 +23,7 @@ L.Control.GeoSearch = L.Control.extend({
         searchLabel: 'search for address ...',
         notFoundMessage: 'Sorry, that address could not be found.',
         messageHideDelay: 3000,
-        zoomLevel: 14
+        zoomLevel: 15
     },
 
     initialize: function (options) {
