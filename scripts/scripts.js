@@ -1,5 +1,6 @@
 //var currentlyClicked = null;
 
+//When they close the sidebar change all the markers back to their default state
 $( document ).ready(function() {
 	$( ".close" ).click(function() {
 		for(var i=0; i<allMarkers.length;i++){
@@ -13,6 +14,7 @@ $( document ).ready(function() {
 
 var allMarkers = [];
 
+//Initalize a new map
 var map = new L.Map('map', {
         center: [43.1900, -77.6115],
         zoom: 12,
@@ -25,10 +27,12 @@ var map = new L.Map('map', {
         ]
 });
 
+//Init sidebar
 var sidebar = L.control.sidebar('sidebar', {
     position: 'left'
 });
 
+// Init Search bar
 new L.Control.GeoSearch({
     provider: new L.GeoSearch.Provider.OpenStreetMap(),
     showMarker: true
@@ -39,24 +43,12 @@ map.addControl(sidebar);
 
 function init(){
     
-    //var marker = L.marker([43.1556, -77.6115]).addTo(map);
-    //var start_date = '2013-11-18';
-   /* var end_date = '2013-11-25';
-    var event_ids = '98,99,100,103,104,149';
-    var latitude_large = '43.20333823191608'
-    var latitude_small = '43.11869245034604';
-    var longitude_large = '-77.54431728574195';
-    var longitude_small = '-77.67752651425758';
-    
-    var queryString = 'https://www.crimereports.com/services/crimedata/crime_list.html/'+start_date+'/'+ end_date+'/'+ event_ids + '/' + latitude_large + '/' + latitude_small + '/' + longitude_large + '/' + longitude_small + '/?limit=false';
-    
-    //console.log(queryString);
-    loadData(queryString);*/
     loadData();
     plotNeighborhoods();
 }
 
 
+// Pull in our JSON data
 function loadData(){
         
         var url = "crimeData2.json";
@@ -72,7 +64,9 @@ function loadData(){
      
 }
 
-
+//Called from loadData()
+//This function handles sending the address from the JSON to the Google Maps API
+//Which returns a latitude and longitude so we can plot them with leaflet
 function handleGeoData(response){
         // for each incident, place a marker on the map
         var n;
@@ -92,7 +86,9 @@ function handleGeoData(response){
 				url: query,
 				success: function(success){
 					coords = getlatlong(success);
-					plotCrime(coords,this.id);
+					if(coords != ''){
+						plotCrime(coords,this.id);
+					}
 				},
 				type: "GET"
 			});
@@ -100,21 +96,29 @@ function handleGeoData(response){
 }
 
 
+//Actually handles plotting the crime data
 function plotCrime(coords,crimeID){
-	var marker = L.marker([coords[0], coords[1]]).addTo(map).on('click',function(){
-		generateCrimeData(marker.myId,coords);
-		for(var i=0; i< allMarkers.length; i++){
-			allMarkers[i].setIcon(markerIcon);
-		}
-		marker.setIcon(highlightedIcon);
-	});
-	marker.myId = crimeID;
-	
-	allMarkers.push(marker);
+	// Check if coords is undefined - if it is there means there was a problem getting those coords
+	// If so just skip plotting that crime data until I figure out a better solution.
+	if(! coords){
+
+	}else{
+		var marker = L.marker([coords[0], coords[1]]).addTo(map).on('click',function(){
+			generateCrimeData(marker.myId,coords);
+			for(var i=0; i< allMarkers.length; i++){
+				allMarkers[i].setIcon(markerIcon);
+			}
+			marker.setIcon(highlightedIcon);
+		});
+		marker.myId = crimeID;
+		
+		allMarkers.push(marker); //Keep the markers in an array so we can easily change them when needed.
+	}
 	
 }
 
 
+//This function handles getting the data that is displayed in the side bar by passing in an ID
 function generateCrimeData(crimeID,coords){
 	console.log("incoming id:"+crimeID);
 	 var url = "crimeData2.json";
@@ -127,10 +131,11 @@ function generateCrimeData(crimeID,coords){
 			var n;
 			for(n=0;n<response.length;n++){
 				var id = response[n].Identifier;
-				//console.log(id);
-				if(id == crimeID){
+				//Grab the data if the current iteration is the crime we want.
+				if(id == crimeID){ 
 					console.log(crimeID);
 					var address = response[n].Address;
+					//The data has BLOCK in all of the addresses, let's just remove that.
 					address = address.replace("Block",""); 
 					var agency = response[n].Agency;
 					var type = response[n].CrimeType;
@@ -144,7 +149,7 @@ function generateCrimeData(crimeID,coords){
 					string += '<p>'+description+'</p>';
 					string += '<a href="http://maps.googleapis.com/maps/api/streetview?size=800x400&location='+this.streetCoords[0]+','+this.streetCoords[1]+'&fov=90&heading=235&pitch=10&sensor=false"><img id="streetView" src="http://maps.googleapis.com/maps/api/streetview?size=400x200&location='+this.streetCoords[0]+','+this.streetCoords[1]+'&fov=90&heading=235&pitch=10&sensor=false" /></a>';
 					
-					sidebar.setContent(string);
+					sidebar.setContent(string); //Send to sidebar.
 					break;
 					
 				}else{
@@ -160,7 +165,7 @@ function generateCrimeData(crimeID,coords){
 	}
 }
 
-
+//Used to add the shapefile to the map.
 function plotNeighborhoods(){
 	var shpfile = new L.Shapefile('Neighborhoods.zip',{onEachFeature:function(feature, layer) {
     	getNumIncidents(shpfile,layer);
@@ -174,7 +179,7 @@ function plotNeighborhoods(){
 
 
 
-
+// FUNCTIONALITY NOT WORKING - Will determine how many crimes take place in a neighborhood layer.
 function getNumIncidents(shpfile,layer){
 	console.log(shpfile);
 	console.log(layer);
@@ -199,15 +204,21 @@ function getNumIncidents(shpfile,layer){
 }
 
 
-
+// Helper function for cleaning up the returned data from Google Maps API
 function getlatlong(response){
-	var coords = [];
-	var myLat = response.results[0].geometry.location.lat;
-	coords.push(myLat);
-	var myLng = response.results[0].geometry.location.lng;
-	coords.push(myLng);
-	
-	return coords;	
+	var data = response.results[0];
+	if(! data){
+		
+	}else{
+		var coords = [];
+		console.log(response.results[0]);
+		var myLat = response.results[0].geometry.location.lat;
+		coords.push(myLat);
+		var myLng = response.results[0].geometry.location.lng;
+		coords.push(myLng);
+		
+		return coords;	
+	}
 }
 
 
