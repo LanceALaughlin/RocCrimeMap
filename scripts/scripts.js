@@ -76,16 +76,16 @@ function handleGeoData(response){
             //var myLat = parseFloat(response[n].lat);
             //var lng = parseFloat(response[n].lng);
             var identifier = response[n].Identifier;
-            var address = response[n].Address + "Rochester, NY";
-            address = encodeURIComponent(address);
+            var address = response[n].Address + " Rochester, NY";
+            //address = encodeURIComponent(address);
             var query = "http://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&sensor=true";
-            
             $.ajax({
             	id: identifier,
 				dataType: "json",
 				url: query,
 				success: function(success){
 					coords = getlatlong(success);
+					//console.log("coords:"+coords);
 					if(coords != ''){
 						plotCrime(coords,this.id);
 					}
@@ -133,7 +133,7 @@ function generateCrimeData(crimeID,coords){
 				var id = response[n].Identifier;
 				//Grab the data if the current iteration is the crime we want.
 				if(id == crimeID){ 
-					console.log(crimeID);
+					// console.log(crimeID);
 					var address = response[n].Address;
 					//The data has BLOCK in all of the addresses, let's just remove that.
 					address = address.replace("Block",""); 
@@ -181,8 +181,8 @@ function plotNeighborhoods(){
 
 // FUNCTIONALITY NOT WORKING - Will determine how many crimes take place in a neighborhood layer.
 function getNumIncidents(shpfile,layer){
-	console.log(shpfile);
-	console.log(layer);
+	// console.log(shpfile);
+	// console.log(layer);
 	var count = 0;
 	/*var count = 0;
 	var results = [];
@@ -207,11 +207,11 @@ function getNumIncidents(shpfile,layer){
 // Helper function for cleaning up the returned data from Google Maps API
 function getlatlong(response){
 	var data = response.results[0];
+	//console.log("data: " + data.geometry.location.lat);
 	if(! data){
 		
 	}else{
 		var coords = [];
-		console.log(response.results[0]);
 		var myLat = response.results[0].geometry.location.lat;
 		coords.push(myLat);
 		var myLng = response.results[0].geometry.location.lng;
